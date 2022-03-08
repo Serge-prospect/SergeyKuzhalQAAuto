@@ -6,19 +6,12 @@ namespace Array10toSquaredArray
     {
         static void Main(string[] args)
         {
-            int[] initialArray = new int[10];
-            for (int index = 0; index < initialArray.Length; index++)
+            int[] Array = new int[10];
+            for (int index = 0; index < Array.Length; index++)
             {
-                initialArray[index] = index;
+                Array[index] = (int)Math.Pow(index, 2);
             }
-            Console.WriteLine("Initial array indexes: [{0}]", string.Join(", ", initialArray));
-
-            int[] squaredArray = initialArray;
-            for (int index = 0; index < squaredArray.Length; index++)
-            {
-                squaredArray[index] = (int)Math.Pow(initialArray[index], 2);
-            }
-            Console.WriteLine("Squared array indexes: [{0}]", string.Join(", ", squaredArray));
+            Console.WriteLine("Squared index array: [{0}]", string.Join(", ", Array));
         }
     }
 }
