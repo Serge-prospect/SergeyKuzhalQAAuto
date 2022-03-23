@@ -15,11 +15,6 @@ namespace BooksInfo
             Title = "No title";
             Pages = 0;            
         }
-        //public Book(string title, int pages)
-        //{
-        //    Title = title;
-        //    Pages = pages;
-        //}
 
         public void DisplayBookInfo()
         {
