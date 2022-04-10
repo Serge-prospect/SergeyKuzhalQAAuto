@@ -43,6 +43,43 @@ namespace Office
                 if (currentEmployee is IAssignTask)
                     currentEmployee.PrintEmployeeInfo();
             }
-        }
+
+            //Sort Employees            
+            string sortIntroText;
+            string GetSortIntroText(string sortType)
+            {
+                string text = "Sorted by " + sortType + ":";
+                return text;
+            }
+            void DisplayEmployees()
+            {
+                foreach (Employee currentEmployee in officeEmployees)
+                    currentEmployee.PrintEmployeeInfo();
+            }
+                        
+            //Sort Employees by First Name
+            sortIntroText = GetSortIntroText(CompareByFirstName.sortType);
+            officeEmployees.Sort(new CompareByFirstName());
+            Console.WriteLine(sortIntroText);
+            DisplayEmployees();
+
+            //Sort Employees by Tax ID
+            sortIntroText = GetSortIntroText(CompareByTaxId.sortType);
+            officeEmployees.Sort(new CompareByTaxId());            
+            Console.WriteLine(sortIntroText);
+            DisplayEmployees();
+
+            //Sort Employees by Full Name Length
+            sortIntroText = GetSortIntroText(CompareByFullNameLength.sortType);
+            officeEmployees.Sort(new CompareByFullNameLength());
+            Console.WriteLine(sortIntroText);
+            DisplayEmployees();
+
+            //Sort Employees by Task Assigners and their Last Name then others
+            sortIntroText = GetSortIntroText(CompareByAssignTaskAndLastName.sortType);
+            officeEmployees.Sort(new CompareByAssignTaskAndLastName());
+            Console.WriteLine(sortIntroText);
+            DisplayEmployees();            
+        }        
     }
 }

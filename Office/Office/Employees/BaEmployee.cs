@@ -17,7 +17,7 @@ namespace Office
 
         public override void PrintEmployeeInfo()
         {
-            Console.WriteLine($"Tax ID: {TaxId}\tFull name: {FirstName} {LastName}\t{Speciality}");
+            Console.WriteLine($"Tax ID: {TaxId}\tFull name: {FirstName} {LastName,-10}\t{Speciality}");
         }
     }
 }
