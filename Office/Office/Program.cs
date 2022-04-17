@@ -7,6 +7,13 @@ namespace Office
     {
         static void Main(string[] args)
         {
+            var interfaces = new Dictionary<int, string>()
+            {
+                [1] = "IAssignTask",
+                [2] = "IReviewCode",
+                [3] = "IWriteCode",
+            };
+
             var officeEmployees = new List<Employee>()
             {
                 new QaEmployee("Caly", "Brown"),
@@ -20,28 +27,45 @@ namespace Office
                 new QaEmployee("Peter", "Parker")
             };
 
-            //Employees who can Write Code
-            Console.WriteLine("Write code:");
-            foreach (Employee currentEmployee in officeEmployees)
+            //Display Employees who can Write Code
+            DisplayByInterface<IAssignTask>(officeEmployees, interfaces[1]);
+
+            //Display Employees who can Review Code
+            DisplayByInterface<IReviewCode>(officeEmployees, interfaces[2]);
+
+            //Display Employees who can Assign Task
+            DisplayByInterface<IWriteCode>(officeEmployees, interfaces[3]);
+
+            void DisplayByInterface<TInterface>(List<Employee> employees, string interfaceName)
             {
-                if (currentEmployee is IWriteCode)                
-                    currentEmployee.PrintEmployeeInfo();                
+                bool isIntroTextDisplayed = false;
+                foreach (Employee currentEmployee in employees)
+                {
+                    if (currentEmployee is TInterface)
+                    {
+                        if (isIntroTextDisplayed == false)
+                        {
+                            DisplayIntroText(currentEmployee, interfaceName);
+                            isIntroTextDisplayed = true;
+                        }
+                        currentEmployee.PrintEmployeeInfo();
+                    }
+                }
             }
 
-            //Employees who can Review Code
-            Console.WriteLine("Review code:");
-            foreach (Employee currentEmployee in officeEmployees)
+            void DisplayIntroText(Employee employee, string interfaceName)
             {
-                if (currentEmployee is IReviewCode)
-                    currentEmployee.PrintEmployeeInfo();
+                if (interfaceName == GetEmployeeInterfaceByDictionaryName(employee, interfaces[1]))
+                    (employee as IAssignTask).AssignTask();
+                else if (interfaceName == GetEmployeeInterfaceByDictionaryName(employee, interfaces[2]))
+                    (employee as IReviewCode)?.ReviewCode();
+                else if (interfaceName == GetEmployeeInterfaceByDictionaryName(employee, interfaces[3]))
+                    (employee as IWriteCode)?.WriteCode();
             }
 
-            //Employees who can Assign Task
-            Console.WriteLine("Assign task:");
-            foreach (Employee currentEmployee in officeEmployees)
+            string GetEmployeeInterfaceByDictionaryName(Employee employee, string dictionaryInterface)
             {
-                if (currentEmployee is IAssignTask)
-                    currentEmployee.PrintEmployeeInfo();
+                return employee.GetType().GetInterface(dictionaryInterface)?.Name;
             }
 
             //Sort Employees            
