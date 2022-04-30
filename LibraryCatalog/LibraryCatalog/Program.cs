@@ -56,7 +56,7 @@ namespace LibraryCatalog
                         }
                     ),
                 }
-            );
+            );            
 
             List<Book> filteredBooks;
             List<Author> filteredAuthors;
@@ -72,11 +72,16 @@ namespace LibraryCatalog
 
             // Method 3 - Get list of Books by a specific Author
             //  And published after a specific year
-            var bIndex = 0;
-            var aIndex = bIndex;
-            var specificAuthorFName = libraryCatalog.ListOfBooks[bIndex].Authors[aIndex].FName;
-            var specificAuthorLName = libraryCatalog.ListOfBooks[bIndex].Authors[aIndex].LName;
-            var specificYear = libraryCatalog.ListOfBooks[bIndex].PubDate.Year;
+            var specificAuthorFName = "Tomas";
+            var specificAuthorLName = "Hardy";
+            var specificYear = 1991;
+
+            // Set specific Author and specific year of Publication from current catalog by parameters
+            //var bIndex = 0;
+            //var aIndex = bIndex;
+            //var specificAuthorFName = libraryCatalog.ListOfBooks[bIndex].Authors[aIndex].FName;
+            //var specificAuthorLName = libraryCatalog.ListOfBooks[bIndex].Authors[aIndex].LName;
+            //var specificYear = libraryCatalog.ListOfBooks[bIndex].PubDate.Year;
 
             Catalog.GetBooksByAuthorAndGtPubDateYear
                 (libraryCatalog, specificAuthorFName, specificAuthorLName, specificYear, out filteredBooks, out introMessage);
@@ -85,6 +90,29 @@ namespace LibraryCatalog
             // Method 4 - Get list of Authors Sorted by year of Birth
             Catalog.GetAuthersSortedByYearOfBirth(libraryCatalog, out filteredAuthors, out introMessage);
             Catalog.DisplayAuthors(filteredAuthors, introMessage);
+
+            // Method 5 - Add new book to the catalog if it is not a duplicate
+            try
+            {
+                libraryCatalog.AddNewBook
+                (
+                    new Book
+                    (
+                        "Title4",
+                        new DateTime(1994, 04, 24),
+                        new List<Author>
+                        {
+                            new Author("Tomas", "Hardy", new DateTime(1800,1,1)),
+                            new Author("FName4.1", "LName4.1", new DateTime(1641,4,1)),
+                            new Author("FName4.2", "LName4.2", new DateTime(1741,4,1))
+                        }
+                    )
+                );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

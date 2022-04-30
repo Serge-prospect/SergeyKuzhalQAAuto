@@ -8,11 +8,16 @@ namespace LibraryCatalog
 {
     class Catalog
     {
-        public List<Book> ListOfBooks { get; }
+        private List<Book> _books;
+        private List<Book> ListOfBooks
+        {
+            get => _books;
+            set => _books = value;            
+         }
         public Catalog(List<Book> books)
         {
-            ListOfBooks = books;
-        }
+            _books = books;
+        }        
 
         // Method 1 - Get list of Books sorted by Titles
         public static void GetBooksSortedByTitle(in Catalog _catalog, out List<Book> _books, out string _introMessage)
@@ -54,6 +59,26 @@ namespace LibraryCatalog
                         .OrderBy(a => a.DoB.Year).ToList();
         }
 
+        // Method 5 - Add new book to the catalog if it is not a duplicate
+        public void AddNewBook(Book newBook)
+        {            
+            if (!this.ListOfBooks.Contains(newBook, new CompareBooks()))
+            {
+                var _introMessage = "New book has been successfully added:";
+                this.ListOfBooks.Add(newBook);
+                _books = this.ListOfBooks;
+                Console.WriteLine($"> > > {_introMessage}");
+                DisplayBookInfo(newBook);
+                Console.WriteLine();
+            }
+            else                
+                throw new Exception
+                    ($"> > > Warning!\n" +
+                    $"The book is not added to the catalog because it is a duplicate:\n" +
+                    $"{"ID:",-34}\t{"Title:",-10}\t{"Published Date:"}\n" +
+                    $"{newBook.ID}\t{newBook.Title,-10}\t{newBook.PubDate.Year}\n");
+        }
+
         // Display Books
         public static void DisplayBooks(List<Book> _books, string _introMessage)
         {
@@ -61,13 +86,19 @@ namespace LibraryCatalog
                 Console.WriteLine($"> > > {_introMessage}");
             foreach (var _book in _books)
             {
-                Console.WriteLine("Book:");
-                Console.WriteLine($"{"ID:",-34}\t{"Title:",-10}\t{"Published Date:"}");
-                Console.WriteLine($"{_book.ID}\t{_book.Title,-10}\t{_book.PubDate.Year.ToString()}");
-                DisplayAuthors(_book.Authors, null);                
+                DisplayBookInfo(_book);
                 Console.WriteLine("-------------------------------------------------------------------------");
             }
             Console.WriteLine();
+        }
+
+        // Display book info
+        public static void DisplayBookInfo(Book _book)
+        {
+            Console.WriteLine("Book:");
+            Console.WriteLine($"{"ID:",-34}\t{"Title:",-10}\t{"Published Date:"}");
+            Console.WriteLine($"{_book.ID}\t{_book.Title,-10}\t{_book.PubDate.Year}");
+            DisplayAuthors(_book.Authors, null);
         }
 
         // Display Authors
@@ -78,7 +109,7 @@ namespace LibraryCatalog
             else Console.WriteLine("Authors:");
             Console.WriteLine($"{"First Name:",-10}\t{"Last Name:",-10}\t{"Date of Birth:"}");
             foreach (var _author in _authors)
-                Console.WriteLine($"{_author.FName,-10}\t{_author.LName,-10}\t{_author.DoB.Year.ToString()}");
+                Console.WriteLine($"{_author.FName,-10}\t{_author.LName,-10}\t{_author.DoB.Year}");
             Console.WriteLine();
         }
     }
