@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace LibraryCatalog
 {
-    class Catalog
+    public class Catalog
     {
         private List<Book> _books;
         private List<Book> ListOfBooks
@@ -33,7 +33,7 @@ namespace LibraryCatalog
             _introMessage = "All authors:";
             _authors = _catalog.ListOfBooks
                             .SelectMany(b => b.Authors)
-                            .Distinct(new CompareAuthorByAuthorFullName())
+                            .Distinct(new CompareAuthors())
                             .OrderBy(a => a.FName + a.LName).ToList();
         }
 
@@ -55,7 +55,7 @@ namespace LibraryCatalog
             _introMessage = "Authors sorted by year of birth:";
             _authors = _catalog.ListOfBooks
                         .SelectMany(b => b.Authors)
-                        .Distinct(new CompareAuthorByAuthorFullName())
+                        .Distinct(new CompareAuthors())
                         .OrderBy(a => a.DoB.Year).ToList();
         }
 

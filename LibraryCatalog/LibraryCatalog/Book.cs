@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LibraryCatalog
 {
-    class Book
+    public class Book
     {
         public string ID { get; } = Guid.NewGuid().ToString();
         public string Title { get; }

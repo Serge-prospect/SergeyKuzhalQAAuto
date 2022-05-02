@@ -10,7 +10,7 @@ namespace LibraryCatalog
         {
             var libraryCatalog = new Catalog
             (
-                new List<Book>
+                new List<Book>()
                 {
                     new Book
                     (
@@ -18,41 +18,41 @@ namespace LibraryCatalog
                         new DateTime(1991, 01, 21),
                         new List<Author>()
                         {
-                            new Author("Tomas", "Hardy", new DateTime(1800,1,1)),
-                            new Author("FName1.1", "LName1.1", new DateTime(1811,1,1)),
-                            new Author("FName1.2", "LName1.2", new DateTime(1812,1,2))                            
+                            new Author("Tomas", "Hardy", new DateTime(1800, 1, 1)),
+                            new Author("FName1.1", "LName1.1", new DateTime(1811, 1, 1)),
+                            new Author("FName1.2", "LName1.2", new DateTime(1812, 1, 2))                            
                         }
                     ),
                     new Book
                     (
                         "Title2",
                         new DateTime(1992, 02, 22),
-                        new List<Author>
+                        new List<Author>()
                         {
-                            new Author("Tomas", "Hardy", new DateTime(1800,1,1)),
-                            new Author("FName2.1", "LName2.1", new DateTime(1821,2,1)),
-                            new Author("FName2.2", "LName2.2", new DateTime(1822,2,1))
+                            new Author("Tomas", "Hardy", new DateTime(1800, 1, 1)),
+                            new Author("FName2.1", "LName2.1", new DateTime(1821, 2, 1)),
+                            new Author("FName2.2", "LName2.2", new DateTime(1822, 2, 1))
                         }
                     ),
                     new Book
                     (
                         "Title3",
                         new DateTime(1993, 03, 23),
-                        new List<Author>
+                        new List<Author>()
                         {
-                            new Author("FName3.1", "LName3.1", new DateTime(1831,3,1)),
-                            new Author("FName3.2", "LName3.2", new DateTime(1832,3,2))
+                            new Author("FName3.1", "LName3.1", new DateTime(1831, 3, 1)),
+                            new Author("FName3.2", "LName3.2", new DateTime(1832, 3, 2))
                         }
                     ),
                     new Book
                     (
                         "Title4",
                         new DateTime(1994, 04, 24),
-                        new List<Author>
+                        new List<Author>()
                         {
-                            new Author("Tomas", "Hardy", new DateTime(1800,1,1)),
-                            new Author("FName4.1", "LName4.1", new DateTime(1641,4,1)),
-                            new Author("FName4.2", "LName4.2", new DateTime(1741,4,1))
+                            new Author("Tomas", "Hardy", new DateTime(1800, 1, 1)),
+                            new Author("FName4.1", "LName4.1", new DateTime(1641, 4, 1)),
+                            new Author("FName4.2", "LName4.2", new DateTime(1741, 4, 1))
                         }
                     ),
                 }
@@ -96,15 +96,15 @@ namespace LibraryCatalog
             {
                 libraryCatalog.AddNewBook
                 (
-                    new Book
+                    new Book        // Invalid book. The book exists in the catalog.
                     (
                         "Title4",
                         new DateTime(1994, 04, 24),
-                        new List<Author>
+                        new List<Author>()
                         {
-                            new Author("Tomas", "Hardy", new DateTime(1800,1,1)),
-                            new Author("FName4.1", "LName4.1", new DateTime(1641,4,1)),
-                            new Author("FName4.2", "LName4.2", new DateTime(1741,4,1))
+                            new Author("Tomas", "Hardy", new DateTime(1800, 1, 1)),
+                            new Author("FName4.1", "LName4.1", new DateTime(1641, 4, 1)),
+                            new Author("FName4.2", "LName4.2", new DateTime(1741, 4, 1))
                         }
                     )
                 );

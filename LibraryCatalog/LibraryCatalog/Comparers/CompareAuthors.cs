@@ -5,15 +5,15 @@ using System.Text;
 
 namespace LibraryCatalog
 {
-    class CompareAuthorByAuthorFullName : IEqualityComparer<Author>
+    public class CompareAuthors : IEqualityComparer<Author>
     {
         public bool Equals(Author x, Author y)
         {
-            return (x.FName + x.LName).Equals(y.FName + y.LName);
+            return (x.FName + x.LName + x.DoB.Year).Equals(y.FName + y.LName + y.DoB.Year);
         }
         public int GetHashCode(Author obj)
         {
-            return (obj.FName + obj.LName).GetHashCode();
+            return (obj.FName + obj.LName + obj.DoB.Year).GetHashCode();
         }
     }
 }

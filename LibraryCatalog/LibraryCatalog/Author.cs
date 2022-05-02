@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LibraryCatalog
 {
-    class Author
+    public class Author
     {
         public string FName { get; }
         public string LName { get; }
