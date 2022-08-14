@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumEmail", "SeleniumEmail\SeleniumEmail.csproj", "{3F72BA3C-81A7-45F1-B11F-94874DE90DEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumEmailTests", "SeleniumEmailTests\SeleniumEmailTests.csproj", "{F193D73D-F8C7-449E-8C9B-D77D7CF5E07E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F72BA3C-81A7-45F1-B11F-94874DE90DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F72BA3C-81A7-45F1-B11F-94874DE90DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F72BA3C-81A7-45F1-B11F-94874DE90DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F72BA3C-81A7-45F1-B11F-94874DE90DEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F193D73D-F8C7-449E-8C9B-D77D7CF5E07E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F193D73D-F8C7-449E-8C9B-D77D7CF5E07E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F193D73D-F8C7-449E-8C9B-D77D7CF5E07E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F193D73D-F8C7-449E-8C9B-D77D7CF5E07E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2471610-7C2B-4588-9892-B5B35BD35AEE}
+	EndGlobalSection
+EndGlobal
